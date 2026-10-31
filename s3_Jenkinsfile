@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'BUCKET_NAME', defaultValue: 'my-custom-bucket-name-0718', description: 'Name of the S3 bucket')
+    }
+
+    environment {
+        AWS_DEFAULT_REGION = 'us-east-1'
+        STACK_NAME = 'example-s3-stack'
+        TEMPLATE_FILE = '01_s3cft.yml'
+    }
+
+    stages {
+        stage('Checkout Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/riteshbehal/devopscourse.git'
+            }
+        }
+
+        stage('Deploy CloudFormation Stack') {
+            steps {
+                script {
+                    sh """
+                        aws cloudformation deploy \
+                          --stack-name ${STACK_NAME} \
+                          --template-file ${TEMPLATE_FILE} \
+                          --region ${AWS_DEFAULT_REGION} \
+                          --parameter-overrides BucketName=${params.BUCKET_NAME}
+                    """
+                }
+            }
+        }
+    }
+}

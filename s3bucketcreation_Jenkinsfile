@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_DEFAULT_REGION = 'ap-southeast-1'      // change if needed
+        S3_BUCKET = 'awsdemojenkins6745ght1'        // bucket name must be globally unique
+    }
+
+    stages {
+        stage('Create S3 Bucket') {
+            steps {
+                sh '''
+                    echo "Creating S3 bucket: $S3_BUCKET in region: $AWS_DEFAULT_REGION"
+                    aws s3api create-bucket --bucket $S3_BUCKET --region $AWS_DEFAULT_REGION --create-bucket-configuration LocationConstraint=$AWS_DEFAULT_REGION || echo "Bucket may already exist"
+                    
+                    echo "Verifying bucket..."
+                    aws s3 ls | grep $S3_BUCKET || echo "Bucket not found"
+                '''
+            }
+        }
+    }
+}
