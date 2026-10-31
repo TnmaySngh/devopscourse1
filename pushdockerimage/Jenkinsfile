@@ -35,7 +35,7 @@ pipeline {
 
         stage('Docker Push') {
             steps {
-                sh 'docker push dockercorona/jenkinstest:$BUILD_NUMBER'
+                sh 'docker push tnmaysngh/jenkinstest:$BUILD_NUMBER'
             }
         }
     }
