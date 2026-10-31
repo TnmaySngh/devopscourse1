@@ -6,7 +6,7 @@ pipeline {
 }
 
     environment {
-        DOCKERHUB_CREDS = credentials('tanmaysingh1203@gmail.com')
+        DOCKERHUB_CREDS = credentials('tnmaysngh')
     }
 
     stages {
@@ -20,7 +20,7 @@ pipeline {
 
         stage('Build Image') {
             steps {
-                sh 'docker build -t dockercorona/jenkinstest:$BUILD_NUMBER ./pushdockerimage/'
+                sh 'docker build -t tnmaysngh/jenkinstest:$BUILD_NUMBER ./pushdockerimage/'
             }
         }
 
