@@ -1,4 +1,6 @@
 terraform {
+  required_version = ">= 1.5.0"
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -7,12 +9,10 @@ terraform {
   }
 
 backend "s3" {
-    bucket       = "tanmay-unique-terraform-bucket-2026"
-    key          = "dev/terraform.tfstate"
-    region       = "us-east-2"
-    dynamodb_table = "Tanmay-DynamoDB-Table"
-    encrypt      = true
-    use_lockfile = true
-  }
-
+  bucket       = "tanmay-unique-terraform-bucket-2026"
+  key          = "terraform.tfstate"
+  region       = "us-east-2"
+  encrypt      = true
+  use_lockfile = true
+}
 }
