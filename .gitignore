@@ -1,0 +1,40 @@
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# AWS EC2 SSH private keys
+*.pem
+*.ppk
+
+# SSH private keys
+id_rsa
+id_ed25519
+*.key
+
+# AWS credentials
+.aws/
+credentials
+
+# Terraform directories
+.terraform/
+
+# Terraform variable files
+*.tfvars
+*.tfvars.json
+
+# Terraform CLI configuration
+.terraformrc
+terraform.rc
+
+# Local override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Lock file (optional: normally KEEP this in Git)
+*.terraform.lock.hcl
