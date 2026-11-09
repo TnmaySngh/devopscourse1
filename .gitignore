@@ -37,4 +37,4 @@ override.tf.json
 *_override.tf.json
 
 # Lock file (optional: normally KEEP this in Git)
-*.terraform.lock.hcl
+# *.terraform.lock.hcl
