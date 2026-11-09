@@ -1,0 +1,12 @@
+# Shell scripts: Linux line endings
+*.sh text eol=lf
+
+# Terraform files
+*.tf text eol=lf
+
+# Git configuration
+*.gitignore text eol=lf
+
+# Windows scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
